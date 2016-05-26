@@ -8,7 +8,7 @@ Usage: console.image("base64 image", offsetX, offsetY);
 offsets default to 0
 
 Supports transparency too.
-Dimensions seem to be very limited, varies on the image, but it cuts of after a certain width/height.
+Dimensions seem to be very limited, varies on the image, but it cuts of after a certain width/height. Also, the image is often stretched.
 
 ![Alt text](http://i.imgur.com/x7vGQOI.jpg)
 It *kinda* works
