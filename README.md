@@ -1,13 +1,23 @@
 # console.image
-Alternative method to console.log an image
+Alternative (very slow) method to console.log an image, since [this](https://github.com/adriancooney/console.image) doesn't seem to work anymore.
 
-Since [this](https://github.com/adriancooney/console.image) doesn't seem to work anymore here's a (very slow) method which works as of Chrome 50.0.2661.102 m and Opera 37.0.2178.43. not in Firefox and IE11 though.
-It displays the image as a series of 1x1 text-shadows of a single dot. The colors are read from a temporary canvas.
-
-Usage: console.image("path/to/image.png", offsetX, offsetY);
-offsets default to 0
-
-Supports transparency too.
-Image seems to have rendering issues but usually you can still recognize it.
+Works in Chrome 50.0.2661.102 m and Opera 37.0.2178.43. not in Firefox and IE11 though.
 
 ![Alt text](http://i.imgur.com/yOW4Pzi.jpg)
+
+#####Usage
+console.image("url", offsetX, offsetY);
+(only works if 'Access-Control-Allow-Origin' header is present on the requested resource, e.g. wikimedia or imgur)
+or if the image is on your server
+console.image("path/to/image.png", offsetX, offsetY);
+offsets default to 0
+Supports transparency.
+
+#####How it works
+Request to the resource is made, image saved in base64. A temporary canvas is created in which the image is drawn.
+getImageData creates an Array that contains the rgb values of every pixel.
+The image is drawn as a series of 1x1 text-shadows of a single dot.
+
+
+
+
