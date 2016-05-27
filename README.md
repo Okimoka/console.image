@@ -1,5 +1,5 @@
 # console.image
-Alternative (very slow) method to console.log an image, since [this](https://github.com/adriancooney/console.image) doesn't seem to work anymore.
+Alternative (very slow) method to console.log an image, since [**this**](https://github.com/adriancooney/console.image) doesn't seem to work anymore.
 
 Works in Chrome 50.0.2661.102 m and Opera 37.0.2178.43. not in Firefox and IE11 though.
 
