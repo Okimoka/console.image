@@ -1,34 +1,58 @@
-console.image = function(base64, offsetX, offsetY) {
+console.image = function(url, offsetX, offsetY) {
 
-            if(!offsetX){offsetX = 0}
-            if(!offsetY){offsetY = 0}
+     var xhr = new XMLHttpRequest();
+     xhr.responseType = 'blob';
+     xhr.onload = function() {
+         var reader = new FileReader();
+         reader.onloadend = function() {
+             base64 = reader.result;
 
-            var canvasNode = document.createElement("canvas");
-            canvasNode.style.display = "none"
-            canvasNode.id = "tempConsoleCanvas"
-            document.getElementsByTagName("body")[0].appendChild(canvasNode);
-    
-            var canvas = document.getElementById("tempConsoleCanvas");
-            var ctx = canvas.getContext("2d");
-            
-            var image = new Image();
-            image.src = base64;
+             if (!offsetX) {
+                 offsetX = 0
+             }
+             if (!offsetY) {
+                 offsetY = 0
+             }
 
-            image.onload = function() {
-                ctx.drawImage(image, 0, 0);
-                imgData = ctx.getImageData(0,0,image.width,image.height);
-                document.getElementsByTagName("body")[0].removeChild(canvas);
+             var canvasNode = document.createElement("canvas");
+             canvasNode.style.display = "none"
+             canvasNode.id = "tempConsoleCanvas"
+             document.getElementsByTagName("body")[0].appendChild(canvasNode);
 
-                var textShadowString = "text-shadow:";
+             var canvas = document.getElementById("tempConsoleCanvas");
+             var ctx = canvas.getContext("2d");
 
-                var pos = 0;
-                for (var i = 0; i < imgData.data.length; i+=4) {
-                    textShadowString += ((pos%image.width+offsetX)+"px "+(((pos/image.height)|0)+offsetY)+"px 0px rgba("+imgData.data[i]+","+imgData.data[i+1]+","+imgData.data[i+2]+","+(imgData.data[i+3]/255)+"),")
-                    pos++;
-                };
+             var image = new Image();
+             image.src = base64;
 
-                textShadowString = textShadowString.slice(0, -1);
-                console.log('%c .', textShadowString);
+             canvas.width = image.width;
+             canvas.height = image.height;
 
-            };
-  };
+
+             image.onload = function() {
+                 ctx.drawImage(image, 0, 0);
+                 var imgData = ctx.getImageData(0, 0, image.width, image.height);
+                 document.getElementsByTagName("body")[0].removeChild(canvas);
+
+                 var textShadowString = "text-shadow:";
+
+                 var pos = 0;
+                 for (var i = 0; i < imgData.data.length; i += 4) {
+                     textShadowString += ((pos % image.width + offsetX) + "px " + (((pos / image.height) | 0) + offsetY) + "px 0px rgba(" + imgData.data[i] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + (imgData.data[i + 3] / 255) + "),")
+                     pos++;
+                 };
+
+                 textShadowString = textShadowString.slice(0, -1);
+                 console.log('%c .', textShadowString);
+
+             };
+
+
+         }
+         reader.readAsDataURL(xhr.response);
+     };
+     xhr.open('GET', url);
+     xhr.send();
+
+
+ };
