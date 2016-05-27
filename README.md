@@ -1,14 +1,13 @@
 # console.image
 Alternative method to console.log an image
 
-Since [this](https://github.com/adriancooney/console.image) doesn't seem to work anymore here's a (very impractical, limited and slow) method which works as of Chrome 50.0.2661.102 m and Opera 37.0.2178.43. not in Firefox and IE11 though.
-It works by drawing the base64 image on a generated canvas, reads the pixels using getImageData, then displays the image as a series of 1x1 text-shadows of a single dot.
+Since [this](https://github.com/adriancooney/console.image) doesn't seem to work anymore here's a (very slow) method which works as of Chrome 50.0.2661.102 m and Opera 37.0.2178.43. not in Firefox and IE11 though.
+It displays the image as a series of 1x1 text-shadows of a single dot. The colors are read from a temporary canvas.
 
-Usage: console.image("data:image/png;base64,...", offsetX, offsetY);
+Usage: console.image("path/to/image.png", offsetX, offsetY);
 offsets default to 0
 
 Supports transparency too.
-Dimensions seem to be very limited, varies on the image, but it cuts of after a certain width/height. Also, the image is often stretched.
+Image seems to have rendering issues but usually you can still recognize it.
 
-![Alt text](http://i.imgur.com/x7vGQOI.jpg)
-It *kinda* works
+![Alt text](http://imgur.com/yOW4Pzi)
