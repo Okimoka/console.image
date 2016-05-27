@@ -3,7 +3,7 @@ Alternative (very slow) method to console.log an image, since [**this**](https:/
 
 Works in Chrome 50.0.2661.102 m and Opera 37.0.2178.43. not in Firefox and IE11 though.
 
-![Alt text](http://i.imgur.com/yOW4Pzi.jpg)
+![Alt text](http://i.imgur.com/RAK1BHh.jpg)
 
 #####Usage
 `console.image("url", offsetX, offsetY);`
