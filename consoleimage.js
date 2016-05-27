@@ -38,7 +38,7 @@ console.image = function(url, offsetX, offsetY) {
 
                  var pos = 0;
                  for (var i = 0; i < imgData.data.length; i += 4) {
-                     textShadowString += ((pos % image.width + offsetX) + "px " + (((pos / image.height) | 0) + offsetY) + "px 0px rgba(" + imgData.data[i] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + (imgData.data[i + 3] / 255) + "),")
+                     textShadowString += ((pos % image.width + offsetX) + "px " + ((((pos / image.height) | 0) + offsetY)/2) + "px 0px rgba(" + imgData.data[i] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + (imgData.data[i + 3] / 255) + "),")
                      pos++;
                  };
 
