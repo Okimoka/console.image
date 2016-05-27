@@ -10,4 +10,4 @@ offsets default to 0
 Supports transparency too.
 Image seems to have rendering issues but usually you can still recognize it.
 
-![Alt text](http://imgur.com/yOW4Pzi)
+![Alt text](http://i.imgur.com/yOW4Pzi.jpg)
